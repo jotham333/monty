@@ -9,7 +9,7 @@
 
 void f_stack(stack_t **head, unsigned int counter)
 {
-	globalVar.istack = 0;
+	globalVar.is_stack = 0;
 	(void)head;
 	(void)counter;
 }
