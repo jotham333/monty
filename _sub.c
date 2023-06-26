@@ -1,13 +1,13 @@
 #include "monty.h"
 
 /**
- * f_swap - swaps the top two elements of the stack
+ * f_sub - subtracts the top two elements of the stack
  * @head: the stack head
  * @counter: current line number in the Monty program
  * Return: nothing
-*/
+ */
 
-void f_swap(stack_t **head, unsigned int counter)
+void f_sub(stack_t **head, unsigned int counter)
 {
 	stack_t *ptr;
 	int temp;
@@ -21,8 +21,9 @@ void f_swap(stack_t **head, unsigned int counter)
 		exit(EXIT_FAILURE);
 	}
 
-	ptr = *head;
-	temp = ptr->n;
-	ptr->n = ptr->next->n;
+	ptr = (*head)->next;
+	temp = ptr->n -= ptr->next->n;
 	ptr->next->n = temp;
+	*head = ptr->next;
+	free(ptr);
 }

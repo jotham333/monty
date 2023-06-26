@@ -8,7 +8,7 @@
 void f_push(stack_t **head, unsigned int counter)
 {
 	stack_t *ptr;
-	int n;
+	int data;
 
 	if (globalVar.arg == NULL || (!isdigit(*globalVar.arg)
 	&& *globalVar.arg != '-'))
@@ -20,23 +20,20 @@ void f_push(stack_t **head, unsigned int counter)
 		exit(EXIT_FAILURE);
 	}
 
-	n = atoi(globalVar.arg);
+	data = atoi(globalVar.arg);
 	ptr = malloc(sizeof(stack_t));
 
 	if (globalVar.is_stack == 0)
 	{
-		ptr->n = n;
+		ptr->n = data;
 		ptr->next = *head;
 		*head = ptr;
 	}
 	else
 	{
-		ptr->n = n;
+		ptr->n = data;
 		ptr->prev = NULL;
 		ptr->next = *head;
 		*head = ptr;
 	}
-
-	fclose(globalVar.file);
-	free(globalVar.content);
 }

@@ -10,8 +10,8 @@
 #include <string.h>
 #include <ctype.h>
 
-#define MAX_OPCODE_LEN 16
-#define MAX_ARG_LEN 16
+#define MAX_OPCODE_LEN 50
+#define MAX_ARG_LEN 50
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -29,14 +29,7 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
-/**
- * struct bus_s - variables -args, file, line content
- * @arg: value
- * @file: pointer to monty file
- * @content: line content
- * @lifi: flag change stack <-> queue
- * Description: carries values through the program
- */
+/* struct global_var - global variable */
 typedef struct global_var {
     char *arg;
     FILE *file;
@@ -46,20 +39,14 @@ typedef struct global_var {
 
 extern GlobalVar globalVar;
 
-/**
- * struct instruction_s - opcode and its function
- * @opcode: the opcode
- * @f: function to handle the opcode
- *
- * Description: opcode and its function
- * for stack, queues, LIFO, FIFO Holberton project
- */
+/* struct instruction_s - opcode and its function */
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+	void (*f)(stack_t **, unsigned int);
 } instruction_t;
 
+/* function prototypes */
 char *_realloc(char *ptr, unsigned int old_size, unsigned int new_size);
 ssize_t getstdin(char **lineptr, int file);
 char  *clean_line(char *content);
